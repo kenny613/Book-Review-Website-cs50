@@ -48,7 +48,7 @@ def index():
     if db.execute("SELECT * FROM books").rowcount == 0:
         writebook(db)
     a=current()
-    return render_template("firstpage.html")
+    return render_template("Firstpage.html")
 
 
 @app.route("/reg/<int:valid_name>/<int:valid_pw>")

@@ -53,7 +53,7 @@ def index():
 
 @app.route("/reg/<int:valid_name>/<int:valid_pw>")
 def reg(valid_name, valid_pw):
-    return render_template("reg.html", valid_name=valid_name, valid_pw=valid_pw)
+    return render_template("Reg.html", valid_name=valid_name, valid_pw=valid_pw)
 
 
 @app.route("/welcome", methods=["GET", "POST"])

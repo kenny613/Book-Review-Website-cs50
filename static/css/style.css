@@ -1,0 +1,118 @@
+.form-group {
+    color: blue!important;
+}
+
+#intro {
+    background-image: url('library.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+}
+
+#intro-text {
+    width: 640px;
+    /*can be in percentage also.*/
+    top: 40%;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    ;
+}
+
+.text {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.navbar-text {
+    position: absolute;
+    color: black;
+    width: 50%;
+    left: 48%;
+    text-align: right !important;
+}
+
+.checked {
+    color: orange;
+}
+
+.navbar-text>span {
+    font-size: 18px;
+    color: gray;
+}
+
+#logout {
+    position: absolute;
+    display: inline-block;
+    left: 90%;
+    width: 8%;
+}
+
+.form-control {
+    left: 5 !important;
+}
+
+.content {
+    padding: 10px 25px 25px 25px;
+}
+
+.firstline {
+    padding: 10px 10px 10px 10px;
+}
+
+#chooseid {
+    display: flex;
+    justify-content: center;
+}
+
+.descript {
+    display: flex;
+    width: 20%;
+}
+
+.item_list {
+    padding: 15px;
+}
+
+.item {
+    display: flex;
+}
+
+#book_info_content {
+    background-image: url('sky.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.choose {
+    width: 20% !important;
+    margin: 20px;
+}
+
+.mainbutton {
+    border: none !important;
+    outline: none !important;
+    background: none !important;
+    color: white !important;
+    margin: 0;
+    border: 0;
+}
+
+.searchbar {
+    padding: 10px !important;
+    border-color: black !important;
+}
+
+@media only screen and (max-width: 991px) {
+    /* For tablets: */
+    .navbar-text {
+        visibility: hidden;
+    }
+    #logout {
+        top: 40%;
+        width: 85px;
+        width: fixed;
+    }
+}

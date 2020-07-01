@@ -1,0 +1,92 @@
+{% extends "layout_login.html" %} {% block extra_style %} {% block script %}
+<script>
+    $(document).ready(function() {
+
+            $(".book").hover(function() {
+                $(this).css("background-color", "yellow")
+            }, function() {
+                $(this).css("background-color", "white")
+            })
+        }
+
+
+
+    )
+</script>
+{% endblock %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %} {% block title %} Welcome! {% endblock %} {% block navbar %}
+<li class="nav-item">
+    <a class="nav-link active" href="#">Search</a>
+</li>
+
+{% endblock %} {% block body %}
+<div>
+
+
+    <div class="content">
+
+
+        <div class="firstline" style="display:flex; justify-content:space-between;">
+            <span style="left:0">Here are the result</span>
+            <span style="right: 0"><form action="{{ url_for('home')}}" method="POST">
+                <button type="submit" style="border: none;
+                    outline: none;
+                    background: none;
+                    cursor: pointer;
+                    color: #0000EE;
+                    padding: 0;
+                    text-decoration: underline;
+                    font-family: inherit;
+                    font-size: inherit;
+                   ">Back to serach</button>
+            </form></span>
+        </div>
+
+
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div style="display:flex ">
+                        <div style="width:120px">
+                            isbn
+                        </div>
+                        <div style="width:150px;text-align:left">
+                            author
+                        </div>
+                        <div style="width: 40% ;text-align:left">
+                            title
+                        </div>
+                        <div style="width:100px;text-align:right;right:0">
+                            year
+                        </div>
+                    </div>
+                </li>
+
+                {% for book in books_result %}
+                <li id="{{ title }}" class="book list-group-item" style="padding: 10px ">
+                    <div style="display:flex ">
+                        <div style="width:120px">
+                            <form action="{{ url_for('book_info',isbn=book.isbn,title=book.title,author=book.author,year=book.year)}}" method="POST">
+                                <button style="border: none; outline: none; background: none; cursor: pointer; color: #0000EE; padding: 0; text-decoration: underline; font-family: inherit; font-size: inherit; ">{{book.isbn}}</button>
+                            </form>
+                        </div>
+                        <div style="width:150px ;text-align:left">
+                            {{book.author}}
+                        </div>
+                        <div style="width: 40% ;text-align:left">
+                            {{book.title}}
+                        </div>
+                        <div style="width:100px;text-align:right;right:0">
+                            {{book.year}}
+
+                        </div>
+                    </div>
+
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+    {% endblock %}

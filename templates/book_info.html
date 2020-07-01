@@ -1,0 +1,192 @@
+{% extends "layout_login.html" %} {% block extra_style %} {% block script %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+    $(document).ready(function() {
+
+        $("#previous").click(() => window.history.back());
+
+        var x = $("#rating").attr("rating")
+        x = Math.round(x)
+
+        for (var i = 0; i < x; i++)
+            $("#rating").append($('<span class="fa fa-star checked"></span>'));
+
+        for (var j = x; j < 5; j++)
+            $("#rating").append('<span class="fa fa-star"></span>');
+
+
+
+    })
+</script>
+{% endblock %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %} {% block title %} Welcome! {% endblock %} {% block navbar %} {% endblock %} {% block body %}
+
+
+
+
+
+<div class="bg-secondary">
+    <div class="firstline" style="display:flex; justify-content:space-between;">
+        <span class="text-warning" style="left:0"><b><i>Here are the details of the book, you can add comments</i></b></span>
+        <span style="right: 0">
+                <button id="previous"  style=" border: none;
+                    outline: none;
+                    background: none;
+                    cursor: pointer;
+                    color: white;
+                    padding: 0;
+                    text-decoration: underline;
+                    font-family: inherit;
+                    font-size: inherit;
+                   ">Back to search result</button>
+            </span>
+    </div>
+</div>
+
+<div id="book_info_content" style="margin:0px; border:0px; padding:0px">
+    <div style="display:flex">
+        <div style="margin:30px 100px 100px 100px; background-color: red ; border-color:blue;">
+            <img src="{{image}}" width="150px" height="200px">
+        </div>
+
+
+        <div class="bg-light" style="display:flex; flex-direction:column;padding-top:30px; width:80%">
+
+            <div style="padding-left:10px ;padding-bottom:10px">
+                <span class=" h3 mx-1 ">{{title}}</span>
+            </div>
+
+            <div style="height:60%">
+                <ul style="height:100%;list-style: none;">
+                    <li class="item_list">
+                        <div class="item">
+                            <div class="descript" style="margin-right:10px">
+                                ISBN:
+                            </div>
+                            <div>
+                                {{isbn}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item_list">
+                        <div class="item">
+                            <div class="descript" style="margin-right:10px">
+                                Author
+                            </div>
+                            <div>
+                                {{author}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item_list">
+                        <div class="item">
+                            <div class="descript" style="margin-right:10px">
+                                Publication year:
+                            </div>
+                            <div>
+                                {{year}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item_list">
+                        <div class="item">
+                            <div class="descript" style="margin-right:10px">
+                                Average rating:
+                            </div>
+                            <div id="rating" rating="{{rating}}">
+                                {{rating}} ({{ratings_count}} records)
+                            </div>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <div style="padding:10px">
+        <div class="font-weight-bolder rounded border" style="padding:10px">
+            <h2>Reviews section</h2>
+        </div>
+        <div style="padding:10px">
+            {% if comment_no== 0 %}
+            <div id="warning" class="alert alert-warning" role="alert">
+                Nobody have commented yet...
+            </div>
+            {% endif %}
+
+            <div id="comments_list">
+                <ul class="list-group">
+                    {% for comment in comments %}
+                    <li class="list-group-item">
+                        <div style="display:flex ">
+                            <div style="width:105px">
+                                <img src="{{url_for('static', filename='male-user-profile-picture.png')}}" style="display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 50%;" height="50" alt="propic"> <span style="display:table;
+                                margin:0 auto;">{{comment.member}}</span>
+                            </div>
+                            <div style="width:70%">
+                                {{comment.comment}}
+                            </div>
+                            <div>
+                                Rating: {{comment.rating}}
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+
+            </div>
+            {% if comment_b4 == 0 %}
+            <div>
+                <br> Say somthing about this book...
+                <form action="{{url_for('add_comment',isbn=isbn,title=title,author=author,year=year)}}" method="POST">
+                    <textarea name="book_review" style="width:100%" required>
+                    
+                    </textarea> Rating:
+                    <div class="form-check form-check-inline">
+
+                        <input class="form-check-input" type="checkbox" name="your_rate" value=1>
+                        <label class="form-check-label" for="inlineCheckbox1">1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="your_rate" value=2>
+                        <label class="form-check-label" for="inlineCheckbox2">2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="your_rate" value=3>
+                        <label class="form-check-label" for="inlineCheckbox3">3 </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="your_rate" value=4>
+                        <label class="form-check-label" for="inlineCheckbox3">4 </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="your_rate" value=5 checked>
+                        <label class="form-check-label" for="inlineCheckbox3">5 </label>
+                    </div>
+                    <input type="submit" value="Submit">
+
+                </form>
+            </div>
+            {% else %}
+            <div id="warning" class="alert alert-warning" role="alert">
+                You have commented before...
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

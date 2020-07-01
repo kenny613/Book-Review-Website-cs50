@@ -1,0 +1,15 @@
+{% extends "layout.html" %} {% block extra_style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %} {% block title %} Success! {% endblock %} {% block navbar %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('reg',valid_name=1,valid_pw=1)}}">Sign up</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('login',correct1=1)}}">Sign in</a>
+</li>
+
+
+{% endblock %} {% block body %}
+<div class="text">
+    Registration success! Welcome {{name}} ! <br> Your password is {{pw}}<br> Dont disclose your password is to others
+</div>
+{% endblock %} {% block input %} {% endblock %}

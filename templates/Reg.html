@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block extra_style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %} {% block title %} Welcome and register! {% endblock %} {% block navbar %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('reg',valid_name=1,valid_pw=1)}}">Sign up</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('login',correct1=1)}}">Sign in</a>
+</li>
+
+
+{% endblock %} {% block body %}
+<div class="text">
+    Enter your usename and password below to register
+</div>
+{% endblock %} {% block input %}
+
+<div class="w-75 p-3">
+    <form action="{{url_for('reg_success')}}" method="post">
+
+        <div class="form-group">
+            <label for="usr">Name:</label> {% if valid_name == 1 %}
+            <input type="text" class="form-control w-25 p-3" name="name" id="usr" placeholder="Username"> {% else %}
+            <input type="text" class="form-control is-invalid w-25 p-3" name="name" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+            <div class="invalid-feedback">
+                This user name been used
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Password:</label> {% if valid_pw == 1 %}
+            <input type="password" class="form-control w-25 p-3" name="pw" id="pwd" placeholder="Password" required> {% else %}
+            <input type="password" class="form-control is-invalid w-25 p-3" name="pw" id="pwd" placeholder="Password" required>
+            <div class="invalid-feedback">
+                Password not the same, please enter again
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Enter password again:</label> {% if valid_pw == 1 %}
+            <input type="password" class="form-control w-25 p-3" name="pw2" id="pwd" placeholder="Password" required> {% else %}
+            <input type="password" class="form-control is-invalid w-25 p-3" name="pw2" id="pwd" placeholder="Password" required>
+            <div class="invalid-feedback">
+                Password not the same, please enter again
+            </div>
+            {% endif %}
+
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+</div>
+</form>
+{% endblock %}

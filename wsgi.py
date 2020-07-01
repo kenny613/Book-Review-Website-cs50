@@ -1,3 +1,3 @@
-from flask import create_app
+from application import index
 
-app=create_app()
+app=index()

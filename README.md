@@ -1,6 +1,6 @@
 # Project
 
-Book Review Website @CS50 Web Programming with Python and JavaScript
+Book Review Website (using Goodreads API) @CS50 Web Programming with Python and JavaScript
 
 - Homepage
 ![Image of homepage](https://github.com/kenny613/Book-Review-Website-cs50/blob/master/home.jpg)

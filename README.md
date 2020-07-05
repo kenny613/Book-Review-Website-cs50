@@ -2,6 +2,15 @@
 
 Book Review Website (using Goodreads API) @CS50 Web Programming with Python and JavaScript
 
+You can check it here: https://kennybook.herokuapp.com/ (Internal server error oftern appears with some database issues, I am trying to solve it)
+
+- Langauges/frameworks/Tools used
+  1. HTML
+  2. CSS (Bootstrap)
+  3. Javascript (JQuery)
+  4. Python (Flask)
+  5. Herouku (For database and deplolying the project)
+
 - Homepage
 ![Image of homepage](https://github.com/kenny613/Book-Review-Website-cs50/blob/master/home.jpg)
 

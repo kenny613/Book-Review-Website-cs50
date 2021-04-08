@@ -2,7 +2,8 @@
 
 Book Review Website (using Goodreads API) @CS50 Web Programming with Python and JavaScript
 
-You can check it here: https://kennybook.herokuapp.com/ (Internal server error oftern appears with some database issues, I am trying to solve it)
+You can check it here: https://kennybook.herokuapp.com/ 
+**Update: No longer working since Goodreads API is not accessbile anymore :(**
 
 - Langauges/frameworks/Tools used
   1. HTML

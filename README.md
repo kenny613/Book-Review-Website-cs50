@@ -1,6 +1,6 @@
 # Project
 
-### **Update: No longer working since Goodreads API is not accessbile anymore :(**
+### **Update: No longer working since Goodreads API is not accessible anymore :(**
 
 Book Review Website (using Goodreads API) @CS50 Web Programming with Python and JavaScript
 
